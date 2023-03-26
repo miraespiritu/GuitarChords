@@ -6,6 +6,7 @@ import argparse
 import itertools
 from collections import Counter
 from collections import deque
+import os
 
 import cv2 as cv
 import numpy as np
@@ -176,6 +177,9 @@ def main():
 
         # Screen reflection #############################################################
         cv.imshow('Hand Gesture Recognition', debug_image)
+        # directory = r'C:\Users\nmosq\OneDrive\Documents\GuitarPicks\web\images'
+        # os.chdir(directory)
+        # cv.imwrite("img_detection.jpg",debug_image)
 
     cap.release()
     cv.destroyAllWindows()

@@ -10,3 +10,4 @@ A chord -- 5
 C chord -- 6
 E chord -- 7
 D chord -- 8
+G Chord -- 9

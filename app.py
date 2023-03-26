@@ -53,10 +53,12 @@ def main():
 
     use_brect = True
 
+    imgBackground = cv.imread('./resources/background.png')
+
     # Camera preparation ###############################################################
     cap = cv.VideoCapture(cap_device)
-    cap.set(cv.CAP_PROP_FRAME_WIDTH, cap_width)
-    cap.set(cv.CAP_PROP_FRAME_HEIGHT, cap_height)
+    cap.set(cv.CAP_PROP_FRAME_WIDTH, 640)
+    cap.set(cv.CAP_PROP_FRAME_HEIGHT, 480)
 
     # Model load #############################################################
     mp_hands = mp.solutions.hands
@@ -110,6 +112,7 @@ def main():
 
         # Camera capture #####################################################
         ret, image = cap.read()
+
         if not ret:
             break
         image = cv.flip(image, 1)  # Mirror display
@@ -174,9 +177,11 @@ def main():
 
         debug_image = draw_point_history(debug_image, point_history)
         debug_image = draw_info(debug_image, fps, mode, number)
-
+        imgBackground[162:162+480,55:55+640] = debug_image
         # Screen reflection #############################################################
         cv.imshow('Hand Gesture Recognition', debug_image)
+        cv.imshow("Background", imgBackground)
+        cv.waitKey(1)
         # directory = r'C:\Users\nmosq\OneDrive\Documents\GuitarPicks\web\images'
         # os.chdir(directory)
         # cv.imwrite("img_detection.jpg",debug_image)
